@@ -1,0 +1,25 @@
+<?php
+
+$request = new HttpRequest();
+$request->setUrl('https://api.evasrv.com/email_verification/');
+$request->setMethod(HTTP_METH_POST);
+
+$request->setHeaders(array(
+  'content-type' => 'application/x-www-form-urlencoded',
+  'cache-control' => 'no-cache'
+));
+
+$request->setContentType('application/x-www-form-urlencoded');
+$request->setPostFields(array(
+  'email' => 'test@domain.com',
+  'user_API_token' => 'ggd0143305f60a131dc5d458431e756e7d1b19ba',
+  '' => ''
+));
+
+try {
+  $response = $request->send();
+
+  echo $response->getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
